@@ -48,9 +48,14 @@ app.post('/api/reviews', (req, res) => {
   console.info(`${req.method} request received to add a review`);
 
   // TODO: Add a comment describing the functionality of following line of code:
+  // Destructuring the product, review, and username from the req.body object and assigning them to variables with the same name.
+  // This is done to make the code more readable and easier to understand.
   const { product, review, username } = req.body;
 
   // TODO: Add a comment describing why we would check to see if the following properties exist before entering the code block
+  // We check if the product, review, and username exist before entering the code block to ensure that the request body contains the necessary information to create a new review.
+  // If any of these properties are missing, we will not be able to create a new review and should return an error response.
+  // This is done to prevent errors and ensure that the request body contains the required information.
   if (product && review && username) {
     // Variable for the object we will save
     const newReview = {
@@ -69,9 +74,15 @@ app.post('/api/reviews', (req, res) => {
     console.log(response);
 
     // TODO: Add a comment explaining the functionality of res.json()
+    // The res.json() method sends a JSON response to the client. It converts the response object to a JSON string and sends it to the client.
+    // In this case, we are sending the response object containing the new review to the client.
+    // The client will receive the response object and can access the new review data. 
     res.status(201).json(response);
   } else {
     // TODO: Add a comment describing the purpose of the else statement in this POST request.
+    // The else statement is used to handle the case where the request body does not contain the necessary information to create a new review.
+    // If the product, review, or username are missing, we will return a 400 status code and an error message.
+    // This is done to inform the client that the request body is missing required information and the review cannot be created.
     res.status(500).json('Error in posting review');
   }
 });
