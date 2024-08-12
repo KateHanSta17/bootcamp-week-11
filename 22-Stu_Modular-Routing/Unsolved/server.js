@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 
 // TODO import the routes
+const tips = require('./routes/tips');
+
 
 // Helper functions for reading and writing to the JSON file
 const { readFromFile, readAndAppend } = require('./helpers/fsUtils');
@@ -20,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // TODO apply middleware to use /api
+app.use('/api', api);
 
 // GET Route for homepage
 app.get('/', (req, res) =>
@@ -32,6 +35,7 @@ app.get('/feedback', (req, res) =>
 );
 
 // TODO move the /api/tips routes to their own file
+app.use('/api/tips', tips);
 
 // GET Route for retrieving all the tips
 app.get('/api/tips', (req, res) => {

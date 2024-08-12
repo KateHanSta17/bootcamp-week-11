@@ -22,5 +22,11 @@
         "tip": "test",
         "topic": "UX",
         "tip_id": "05df"
+    },
+    {
+        "username": "Sarah",
+        "tip": "Make your application accessible by adding alt properties ",
+        "topic": "UI",
+        "tip_id": "405b"
     }
 ]
